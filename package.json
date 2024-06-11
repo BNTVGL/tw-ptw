@@ -1,7 +1,7 @@
 {
-	"name": "#{REPO_NAME}#",
+	"name": "tw-ptw",
 	"version": "1.0.0",
-	"description": "#{DESC}#",
+	"description": "",
 	"scripts": {
 		"format": "prettier --write .",
 		"lint": "eslint . --ext .js --ext .ts",
@@ -18,11 +18,11 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/#{USER_OR_ORG}#/#{REPO_NAME}#.git"
+		"url": "git://github.com/BNTVGL/tw-ptw.git"
 	},
-	"author": "#{USER_OR_ORG}#",
+	"author": "BNTVGL",
 	"license": "CC-BY-SA-3.0",
-	"homepage": "https://github.com/#{USER_OR_ORG}#/#{REPO_NAME}#",
+	"homepage": "https://github.com/BNTVGL/tw-ptw",
 	"sideEffects": [
 		"src/globals.ts"
 	],
