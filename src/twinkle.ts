@@ -1,3 +1,4 @@
+console.debug('Twinke.ts inciado');
 import { Twinkle, init, SiteConfig } from './core';
 import messages from './messages.json';
 import mwMessageList from './mw-messages';
@@ -7,6 +8,10 @@ import { Fluff } from './fluff';
 
 // no customisation; import directly from core
 import { DiffCore as Diff } from './core';
+
+import { Tag } from './tag';
+
+//teste
 
 // register some globals for debugging, as per twinkle v2
 import './globals';
@@ -18,7 +23,7 @@ if (!Morebits.userIsInGroup('autoconfirmed') && !Morebits.userIsInGroup('confirm
 
 Twinkle.userAgent = `Twinkle (${mw.config.get('wgWikiID')})`;
 
-Twinkle.summaryAd = ' ([[Project:TW|TW]])';
+Twinkle.summaryAd = ' ([[WP:TW|TW]])';
 
 Twinkle.changeTags = '';
 
@@ -27,7 +32,7 @@ Twinkle.messageOverrides = messages;
 Twinkle.extraMwMessages = mwMessageList;
 
 // List of module classes enabled
-Twinkle.registeredModules = [Fluff, Diff];
+Twinkle.registeredModules = [Fluff, Diff, Tag];
 
 /**
  * Adjust the following configurations if necessary
@@ -41,7 +46,7 @@ SiteConfig.botUsernameRegex = /bot\b/i;
 
 SiteConfig.flaggedRevsNamespaces = [];
 
-SiteConfig.redirectTagAliases = ['#REDIRECT'];
+SiteConfig.redirectTagAliases = ['#REDIRECIONAMENTO'];
 
 // Go!
 init();
