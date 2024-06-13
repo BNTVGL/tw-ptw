@@ -1,4 +1,3 @@
-console.debug('Twinke.ts inciado');
 import { Twinkle, init, SiteConfig } from './core';
 import messages from './messages.json';
 import mwMessageList from './mw-messages';
