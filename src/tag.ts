@@ -1193,25 +1193,25 @@ class ArticleMode extends TagMode {
 	};
 
 	// Configurations
-	groupTemplateName = 'Multiple issues';
-	groupTemplateNameRegex = '(?:multiple ?issues|article ?issues|mi)(?!\\s*\\|\\s*section\\s*=)';
+	groupTemplateName = 'Múltiplos problemas';
+	groupTemplateNameRegex = '(?:múltiplos ?problemas|mp)(?!\\s*\\|\\s*(seção|secção)\\s*=)';
 	groupTemplateNameRegexFlags = 'i';
 	groupMinSize = 2;
 	assumeUnknownTagsGroupable = false;
-
+	//
 	static isActive() {
 		return (
-			[0, 118].indexOf(mw.config.get('wgNamespaceNumber')) !== -1 &&
+			[0, 2, 118].indexOf(mw.config.get('wgNamespaceNumber')) !== -1 &&
 			!!mw.config.get('wgCurRevisionId')
 		); // check if page exists
 	}
 
 	getMenuTooltip() {
-		return 'Add or remove article maintenance tags';
+		return 'Adicione ou remova marcas de manutenção';
 	}
 
 	getWindowTitle() {
-		return 'Article maintenance tagging';
+		return 'Marcação de manutenção de artigo';
 	}
 
 	makeForm(Window) {
@@ -1221,11 +1221,11 @@ class ArticleMode extends TagMode {
 			type: 'checkbox',
 			list: [
 				{
-					label: 'Group inside {{multiple issues}} if possible',
+					label: 'Agrupar dentro de {{Múltiplos problemas}} se possível',
 					value: 'group',
 					name: 'group',
 					tooltip:
-						'If applying two or more templates supported by {{multiple issues}} and this box is checked, all supported templates will be grouped inside a {{multiple issues}} template.',
+						'Se você aplicar duas ou mais predefinições compatíveis com {{Múltiplos problemas}} e essa caixa estiver marcada, todas as predefinições compatíveis serão agrupadas em uma predefinição {{Múltiplos problemas}}',
 					checked: getPref('groupByDefault'),
 				},
 			],
@@ -1233,9 +1233,9 @@ class ArticleMode extends TagMode {
 
 		this.form.append({
 			type: 'input',
-			label: 'Reason',
+			label: 'Razão',
 			name: 'reason',
-			tooltip: 'Optional reason to be appended in edit summary. Recommended when removing tags.',
+			tooltip: 'Motivo opcional a ser anexado no resumo da edição. Recomendado ao remover marcas.',
 			size: '60px',
 		});
 
@@ -1270,7 +1270,7 @@ class ArticleMode extends TagMode {
 
 				// All tags have their first class name as "box-" + template name
 				if (e.className.indexOf('box-') === 0) {
-					if (e.classList[0] === 'box-Multiple_issues') {
+					if (e.classList[0] === 'box-Múltiplos_problemas') {
 						$(e)
 							.find('.ambox')
 							.each((idx, e) => {
@@ -1286,11 +1286,11 @@ class ArticleMode extends TagMode {
 			});
 
 		// {{Uncategorized}} and {{Improve categories}} are usually placed at the end
-		if ($('.box-Uncategorized').length) {
-			this.existingTags.push('Uncategorized');
+		if ($('.box-Sem_cat').length) {
+			this.existingTags.push('Sem cat');
 		}
-		if ($('.box-Improve_categories').length) {
-			this.existingTags.push('Improve categories');
+		if ($('.box-Cat_def').length) {
+			this.existingTags.push('Cat def');
 		}
 	}
 

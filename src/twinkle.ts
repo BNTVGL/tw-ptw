@@ -10,7 +10,9 @@ import { DiffCore as Diff } from './core';
 
 import { Tag } from './tag';
 
-//teste
+import { Welcome } from './welcome';
+
+import { Warn } from './warn';
 
 // register some globals for debugging, as per twinkle v2
 import './globals';
@@ -31,7 +33,7 @@ Twinkle.messageOverrides = messages;
 Twinkle.extraMwMessages = mwMessageList;
 
 // List of module classes enabled
-Twinkle.registeredModules = [Fluff, Diff, Tag];
+Twinkle.registeredModules = [Fluff, Diff, Tag, Welcome, Warn];
 
 /**
  * Adjust the following configurations if necessary
