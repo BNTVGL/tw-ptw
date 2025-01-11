@@ -852,7 +852,7 @@ const articleTagList: tagListType = {
 		],
 		'Estrutura e Formatação': [
 			{
-				tag: 'Wikificação',
+				tag: 'Wikificar',
 				description: 'artigo necessita de formatação conforme os padrões da Wikipédia',
 			},
 			{
@@ -949,7 +949,7 @@ const articleTagList: tagListType = {
 				description: 'artigo está desatualizado',
 			},
 			{
-				tag: 'ev-atual',
+				tag: 'Evento atual',
 				description: 'artigo trata de um evento atual e pode mudar rapidamente',
 				subgroup: {
 					name: 'eventoAtual',
@@ -1194,11 +1194,11 @@ class ArticleMode extends TagMode {
 
 	// Configurations
 	groupTemplateName = 'Múltiplos problemas';
-	groupTemplateNameRegex = '(?:múltiplos ?problemas|mp)(?!\\s*\\|\\s*(seção|secção)\\s*=)';
+	groupTemplateNameRegex = '(?:Múltiplos ?problemas|mprob)(?!\\s*\\|\\s*seção\\s*=)';
 	groupTemplateNameRegexFlags = 'i';
 	groupMinSize = 2;
 	assumeUnknownTagsGroupable = false;
-	//
+
 	static isActive() {
 		return (
 			[0, 2, 118].indexOf(mw.config.get('wgNamespaceNumber')) !== -1 &&
@@ -1286,12 +1286,12 @@ class ArticleMode extends TagMode {
 			});
 
 		// {{Uncategorized}} and {{Improve categories}} are usually placed at the end
-		if ($('.box-Sem_cat').length) {
-			this.existingTags.push('Sem cat');
-		}
-		if ($('.box-Cat_def').length) {
-			this.existingTags.push('Cat def');
-		}
+		//if ($('.box-Sem_cat').length) {
+		//	this.existingTags.push('Sem cat');
+		//}
+		//if ($('.box-Cat_def').length) {
+		//	this.existingTags.push('Cat def');
+		//}
 	}
 
 	// Tagging process:
@@ -1458,7 +1458,7 @@ class ArticleMode extends TagMode {
 
 			/// Case 2. No group exists, but should be added: Group created. Existing groupable tags are put in it. New groupable tags also put in it.
 		} else if (this.shouldAddGroup()) {
-			Morebits.status.info('Info', 'Grouping supported tags inside {{multiple issues}}');
+			Morebits.status.info('Info', 'Agrupando marcações compatíveis em {{Múltiplos problemas}}');
 
 			return this.spliceGroupableExistingTags().then((groupableExistingTagsText) => {
 				let groupedTagsText =
